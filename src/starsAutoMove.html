@@ -1,0 +1,120 @@
+<body>
+<div id="canvasContainer" style="position: relative;
+position: fixed;
+top: 0;
+bottom: 0;
+right: 0;
+width: 100%;
+z-index: -1;
+">
+<canvas id="body" width="calc(100% - 100px)" height="100%" style="background-color: rgb(3, 3, 3); padding: 0; margin: 0; filter: blur(4px);"></canvas>
+</div>
+</body>
+<script>
+	// In its own function so that other things can have the same var names
+	var allStarsEver = 0;
+	function starsAutoMove() {
+		var stars = []
+		
+		class pos {
+			constructor(x, y, z) {
+				this.z = 0.8 + Math.sin(allStarsEver / 300) / 8;
+				this.x = x;
+				this.y = y * z;
+				this.color = (allStarsEver / 7 + -x / 10) 
+				allStarsEver++;
+				stars.push(this)
+			}
+		}
+		var canvas = document.getElementById("body");
+		var ctx = canvas.getContext("2d");
+		
+		var mouseX = 0;
+		var mouseY = 0;
+		
+		
+		var camX = 0;
+		var camY = 0;
+		var camZ = 0;
+		
+		function getStarsAheadOfCam(numNewStars) {
+			for(var i = 0; i < numNewStars; i++) {
+				var randomZ = 1
+				var newStarAdded = new pos((i / numNewStars) * -canvas.width, -400, randomZ);
+			}
+		}
+		function iterateStars(speed) {
+			for(var i = 0; i < stars.length; i++) {
+				stars[i].y -= speed
+			}
+		}
+		
+		// Draws point in 3d based of delta position of camx y z
+		// Returns if point is left of camera
+		function project3D(x, y, z, col) {
+			var projectedX = (camX + (mouseX - canvas.width / 2) / 1 - x) / z + canvas.width / 2
+			var projectedY = (camY + (mouseY - canvas.width / 2) / 1 - y) / z + canvas.height / 2
+			
+			var darkness = ((0-z*100)+ 110)
+
+			if(canvas.height - projectedY < 100) {
+				darkness *= 1 + ((canvas.height - projectedY) - 100) / 100
+			}
+
+			if(projectedY < 150) {
+				darkness *= (projectedY - 50) / 100
+			}
+
+			ctx.fillStyle = "hsl(" + col + ", 100%, " + darkness + "%)";
+
+			ctx.beginPath();
+			ctx.ellipse(projectedX, projectedY, 3, 3, 0, 0, Math.PI*2);
+			ctx.fill();
+
+			// Add glow effect
+			
+			return projectedY > 2000
+		}
+		
+		frames = 0
+		starFrameSkip = 25
+		starSpeed = 2
+
+		function drawBG(){
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+
+			canvas.style.filter = "blur(" + 20 / + (frames + 2) + "px)";
+
+			if(frames % starFrameSkip == 0){
+				getStarsAheadOfCam(50)
+			}
+			//starFrameSkip = Math.round((Math.sin(frames / 40) + 4) * 5)
+
+			iterateStars(starSpeed)
+			for(var i = 0; i < stars.length; i++) {
+				var left = project3D(stars[i].x, stars[i].y, stars[i].z, stars[i].color)
+				
+				if(left) {
+					stars.splice(i, 1);
+					i--;
+				}
+			}
+			camY = -window.scrollY / 4;
+			setTimeout(drawBG, 20);
+			frames++
+		}
+		
+		drawBG();
+
+		for(var i = 0; i < 800; i++) {
+			if(i % starFrameSkip == 0) {
+				getStarsAheadOfCam(50)
+			}
+			iterateStars(starSpeed)
+		}
+	}
+	
+	starsAutoMove()
+</script>

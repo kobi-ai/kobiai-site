@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<!-- for including html files -->
+<script src="./libs/csi.min.js"></script>
+<script type="text/javascript" src="kobiapi/kobiapi.js"></script>
+
+<head>
+  <title>KobiWare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/monodeco" type="text/css"/>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="/style.css" rel="stylesheet">
+</head>
+<body style="font-family: 'Trebuchet MS'; position: relative;z-index: 1;">
+      <div data-include="/nav.html"></div>
+	
+      <iframe src="/starsAutoMove.html" style="
+          position: fixed;
+          top: 0px;
+          bottom: 0px;
+          right: 0px;
+          width: 100%;
+          border: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          z-index: -1;
+          height: 100%;
+        ">
+      </iframe>
+    
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <div class="position-relative overflow-hidden text-center" style=" padding-bottom: 0px; margin: 0px; z-index: 0;">
+
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    
+      <div id="container" style="position:relative;">
+        <div id="overrideheader" class="mainheader col-md-5 p-lg-5 mx-auto my-5 align-middle" style="max-width: 100%; margin-top:0px!important; bottom: 40px; justify-content: center;">
+          <br><br>
+          <img src="logo.png" class="fade-in-left" style="width: 90%; max-width: 800px"></img>
+          <p style="min-height: 30px;margin-bottom:40px" class="lead font-weight-light normal" id="slogan">Innovate, Simplify, Transform.</p>
+          <a class="btn btn-outline-secondary" href="/contact/index.html">Contact us</a>
+      <style>
+        /* Add a class to the image to apply the default blur */
+        /* Credit: Chat-GPT */
+            .blurred-image {
+                filter: blur(0.7rem); /* Change the value as needed to adjust the blur amount */
+                transition: filter 0.3s ease; /* Smooth transition on hover */
+                width: 100%
+            }
+
+            .blurred-image-container:hover .blurred-image {
+                filter: blur(0); /* Remove the blur effect on hover */
+            }
+
+            /* Add a gradient border that fades in on hover */
+            .blurred-image-container::before {
+                content: "";
+                position: absolute;
+                top: -15px;
+                left: 0px;
+                right: 0px;
+                bottom: -15px;
+                z-index: 0;
+                pointer-events: none;
+                background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(2,0,35,1) 2%, rgba(12,0,255,1) 50%, rgba(0,0,2,1) 98%, rgba(0,0,0,0) 100%);
+                opacity: 0;
+                border-radius: 10px; /* Adjust the radius for a softer gradient border */
+                transition: opacity 0.3s ease; /* Smooth transition on hover */
+                background-clip: padding-box; /* Clip the background to the padding-box area */
+                padding: 0px; /* Use padding to control the size of the gradient border */
+            }
+
+            .blurred-image-container:hover::before {
+                opacity: 1; /* Show the gradient border on hover */
+            }
+
+            /* Styles for the translucent pane */
+            .translucent-pane {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 78px;
+                background-color: rgba(0, 0, 0, 0.8);
+                opacity: 1.0;
+                z-index: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            /* Styles for the description box */
+            .description-box {
+                position: absolute;
+                top: 78px;
+                left: 0;
+                width: 100%;
+                height: calc(100% - 78px);
+                background-color: rgba(2,0,0,0.7);
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                color: #fff;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;
+            }
+            /* Styles to show the translucent pane and description box on click */
+            .blurred-image-container:hover .description-box {
+                opacity: 1;
+            }
+            .product-desc {
+              font-size: 105%;
+            }
+            div.product-title{
+              padding: 15px 0;
+            }
+
+
+      </style>
+      
+      <script>
+        // This script types out different slogans
+        var slogans=["Researching at the forefront of AI", "Creating new fields in AI", "Creating world class AI"]
+        var targetSloganIndex = 1;
+        var targetSlogan = slogans[targetSloganIndex];
+        var sloganElement = document.getElementById("slogan")
+        sloganElement.innerHTML = slogans[0];
+        var isAdding = false;
+        var waitTicks = 10;
+        
+        function getSloganText() {
+          return sloganElement.innerHTML;
+        }
+        
+        function addString(str) {
+          sloganElement.innerHTML = getSloganText() + str;
+        }
+        
+        function removeLetter() {
+          sloganElement.innerHTML = getSloganText().slice(0, -1)
+        }
+        
+        function sloganLogic() {
+          if(waitTicks <= 0) {
+            if(isAdding) {
+              if(getSloganText() == targetSlogan) {
+                isAdding = false;
+                targetSloganIndex = (targetSloganIndex + 1) % slogans.length
+                targetSlogan = slogans[targetSloganIndex]
+                waitTicks = 50
+              } else {
+                addString(targetSlogan.slice(getSloganText().length, getSloganText().length + 1))
+              }
+            } else {
+              if(getSloganText() == targetSlogan.slice(0, getSloganText().length)) {
+                //console.log(getSloganText())
+                isAdding = true;
+                waitTicks = 10
+              } else {
+                removeLetter()
+              }
+            }
+          }
+          waitTicks--;
+        }
+        
+        const interval = setInterval(function() {
+            sloganLogic();
+        }, 50);
+      </script>
+      
+        </div>
+    
+      </div>
+    
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+        <div class="mainContent mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-left text-white overflow-hidden">
+          <div class="my-3 py-3 row">
+            <div class="col-sm">
+              <h2 class="display-5 font-weight-light">About us</h2>
+              <p class="lead font-weight-medium gradient2">KoBi-AI is a subset of KobiWare, where our top machine learning reserchers endevour to train world-class models and discover new applications AI can be used for.</p>
+                <p>Follow our organization on <a href="https://huggingface.co/kobiAI" class="lead font-weight-bold gradient1">huggingface</a> to stay up to date on our model releases!</p>
+              <iframe src="/hr.html" width="100%" height="70px" frameborder="0" height="auto" id="planet"
+                style="overflow: hidden;"></iframe>
+    
+              <h2 class="display-5 font-weight-light">Our history</h2>
+              <p class="lead font-weight-medium gradient1">Since the creation of KobiWare in February 2023, we have developed many new software and game applications. Our first product, Stranded in the Sewers launched in February 2023 to critical acclaim and an immediate cult status. Since then, we have been inovating with new ideas such as Feiler File Manager, a 3D file explorer, and other software like Dawnlang and KobiMusic.<br><br>We launched KoBi-AI in June 2024 and we plan to use our expertise as a company to create new groundbreaking AI</p>
+            </div>
+            <div class="col-sm align-items-center justify-content-center" style="text-align: center">
+          <div style="min-height:500px;width: 100%">
+                <iframe src="/3D/earth.html" style="width: 100%; height:500px; border: 0 "></iframe>
+              </div>
+              <label for="planet" class="kindaHidden text-left" style="text-align: center!important;">Click and drag to pan camera.</label>
+            </div>
+    
+          </div>
+          
+          <h2 class="display-5 font-weight-light">Models</h2>
+            <hr>
+            <div class="d-flex flex-row">
+              <div style="width: 15%; padding: 25px; margins: 0px;" class="	d-none d-md-block">
+                <img src="history.png" style="width: 100%"></img>
+              </div>
+              <div style="width: 100%">
+                <div class="my-3 py-3 row ">
+                  <div class="col-sm">
+                      <div class="blurred-image-container" style="text-align: center">
+                      <img src="ssits.png" alt="Blurred Image" class="blurred-image">
+                      <div class="translucent-pane product-title"><h1 id="sits" style="">Stranded In the Sewers</h1></div>
+                      <div class="description-box">
+                          <p class="product-desc">Stranded in the Sewers was KobiWare's first game. It is a puzzle platformer, similar gamplay to that of game Fireboy and Watergirl.</p>
+                          <p class="product-desc">Legends have it that they're headed to New York...</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                      <div class="blurred-image-container" style="text-align: center">
+                      <img src="timewinder.png" alt="Blurred Image" class="blurred-image">
+                      <div class="translucent-pane product-title"><h1 id="timewinder" style="">Timewinder</h1></div>
+                      <div class="description-box">
+                          <p class="product-desc">Timewinder is a puzzle game where you play as a time-traveling robot. You move around boxes and buttons to get to an end goal. These elements are effected in the future if you move them in the past.</p>
+                          <p class="product-desc">View the <a href="https://fenix-bear.itch.io/timewinder" class="gradient1">itch.io project</a></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm align-items-center justify-content-center" style="text-align: center">
+                    <div class="blurred-image-container">
+                      <img src="feiler.png" aslt="Blurred Image" class="blurred-image">
+                      <div class="translucent-pane product-title"><h1 id="ffm">Feiler File manager</h1></div>
+                      <div class="description-box">
+                          <p class="product-desc">Feiler File Manager is a file explorer like Nautilus, Dolphin, or Windows File Explorer. However, unlike those programs, it displays file objects in 3 demensions</p>
+                          <p class="product-desc">It is bundled in the <a href="https://shrek-gamer-13.itch.io/kobiware-collection" class="gradient1">KobiWare Collection</a> on itch.io</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="my-3 py-3 row break">
+                  <div class="col-sm align-items-center justify-content-center" style="text-align: center">
+                    <div class="blurred-image-container">
+                      <img src="kobimusic.png" aslt="Blurred Image" class="blurred-image">
+                      <div class="translucent-pane product-title"><h1 id="kobimusic">KobiMusic</h1></div>
+                      <div class="description-box">
+                          <p class="product-desc">KobiMusic is an AI powered music generator similar to <a href="https://openai.com/research/musenet" class="gradient1">MuseNet</a></p>
+                          <p class="product-desc">View <a href="https://hidude562.itch.io/kobimusic-demo" class="gradient1">the project</a> on itch.io</p>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="col-sm align-items-center justify-content-center" style="text-align: center">
+                    <div class="blurred-image-container">
+                      <img src="DawnLang.png" aslt="Blurred Image" class="blurred-image">
+                      <div class="translucent-pane product-title"><h1 id="dawnlang">DawnLang</h1></div>
+                      <div class="description-box">
+                          <p class="product-desc">DawnLang is KobiWare's custom programming language.</p>
+                          <p class="product-desc">Check out DawnLang <a href="https://github.com/Pyro569/DawnLang-Plus-Plus"
+                              class="gradient1">here</a></p>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+      <div data-include="../footer.html"></div>
+    </div>
+    </body>
+    </html>
